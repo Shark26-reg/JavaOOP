@@ -34,7 +34,7 @@ public class Search {
         for (Connect t : tree) {
 
             if (t.p1.age <= age && !resultAge.contains(t.p1.fullName)) {
-                resultAge.add(t.p1.fullName);
+                resultAge.add(t.p2.fullName);
             }
         }
         return resultAge;
