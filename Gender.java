@@ -1,6 +1,6 @@
 package tree;
 
 public enum Gender {
-    Male, Female;
-    
+    Male, Female, parent, children, vife, husbent;
+
 }
