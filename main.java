@@ -2,41 +2,39 @@ package tree;
 
 public class main {
     public static void main(String[] args) {
-        Human irina = new Human("Ирина", 56);
-        Human igor = new Human("Игорь", 60);
-        Human vasya = new Human("Вася", 30);
-        Human ivan = new Human("Иван", 8);
-        Human jane = new Human("Женя", 10);
-        Human masha = new Human("Маша", 27);
-        Human sasha = new Human("Саша", 9);
-        Human sasha10 = new Human("Саша", 10);
-        Human sasha11 = new Human("Саша", 11);
-        Human sasha3 = new Human("Саша", 3);
+        Human irina = new Human("Ирина", Sex.woman, "12.07.1936");
+        Human elena = new Human("Елена", Sex.woman, "21.12.1960");
+        Human vasya = new Human("Вася", Sex.man, "25.03.1957");
+        Human ivan = new Human("Иван", Sex.man, "15.09.1983");
+        Human jane = new Human("Женя", Sex.woman, "03.02.1981");
+        Human masha = new Human("Маша", Sex.woman, "05.06.1965");
+        Human gala = new Human("Галина", Sex.woman, "18.10.2009");
+        Human anton = new Human("Антон", Sex.man, "22.05.1986");
+        Human ura = new Human("Юра", Sex.man, "19.02.2015");
+        
         FamilyTree ft = new FamilyTree();
-        ft.appendPerentChild(irina, vasya);
-        ft.appendPerentChild(irina, masha);
-        ft.appendPerentChild(vasya, jane);
-        ft.appendPerentChild(vasya, ivan);
-        ft.appendPerentChild(irina, igor);
-        ft.appendPerentChild(igor, vasya);
-        ft.appendPerentChild(igor, masha);
-        ft.appendPerentChild(igor, sasha);
-        ft.appendPerentChild(igor, sasha10);
-        ft.appendPerentChild(igor, sasha11);
-        ft.appendPerentChild(igor, sasha3);
+        ft.addPartner(irina, vasya);
+        ft.addPartner(irina, masha);
+        ft.addPartner(vasya, elena);
+        ft.addPartner(vasya, jane);
+        ft.addPartner(elena, jane);
+        ft.addPartner(vasya, ivan);
+        ft.addPartner(elena, ivan);
+        ft.addPartner(vasya, anton);
+        ft.addPartner(elena, anton);
+        ft.addPartner(ivan, gala);
+        ft.addPartner(ivan, ura);
+        
 
 
-        System.out.println("Дети Ирины");
-        System.out.println(new Search(ft).spend(irina, Gender.parent));
+        new Viewer(ft).viewerParent(vasya);
+        new Viewer(ft).viewerBrotherSister(vasya);
+        new Viewer(ft).viewerPartners(vasya);
+        new Viewer(ft).viewerChildren(vasya);
+        new Viewer(ft).viewerBrotherSister(ivan);
+        new Viewer(ft).viewerParent(ivan);
+        
 
-        System.out.println("Дети Игоря");
-        System.out.println(new Search(ft).spend(igor, Gender.parent));
-
-        System.out.println("Муж Ирины");
-        System.out.println(new Search(ft).spend(irina, Gender.vife));
-
-        System.out.println("Поиск людей младше заданного возраста");
-        System.out.println(new Search(ft).searchAge());
     }
 
 }

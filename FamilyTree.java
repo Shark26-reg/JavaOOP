@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class FamilyTree {
     private ArrayList<Connect> tree = new ArrayList<>();
@@ -9,15 +10,9 @@ public class FamilyTree {
         return tree;
     }
 
-    public void appendPerentChild(Human parent, Human children) {
+    public void append(Human parent, Human children) {
         tree.add(new Connect(parent, Gender.parent, children));
         tree.add(new Connect(children, Gender.children, parent));
     }
 
-
-    public void appendVifeHusbent(Human vife, Human husbent) {
-        tree.add(new Connect(vife, Gender.vife, husbent));
-        tree.add(new Connect(husbent, Gender.husbent, vife));
-
-    }
 }

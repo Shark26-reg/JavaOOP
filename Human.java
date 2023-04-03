@@ -2,30 +2,27 @@ package tree;
 
 
 public class Human {
-    public String fullName;
-    public int age;
+    private String fullName;
+    private Sex sex;
+    private String birthday;
 
-    public Human(String fullName, int age) {
+    public Human(String fullName) {
+        this(fullName, Sex.none, "-" );
+    }
+
+    public Human(String fullName, String birthday){
+        this(fullName, Sex.none, birthday);
+    }
+
+    public Human(String fullName, Sex sex, String birthday){
         this.fullName = fullName;
-        this.age = age;
+        this.sex = sex;
+        this.birthday = birthday;
     }
 
 
     public String getFullName() {
         return fullName;
     }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-
+  
 }
