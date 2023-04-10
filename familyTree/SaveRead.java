@@ -2,42 +2,25 @@ package tree.familyTree;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class SaveRead implements SaveAndRead {
-    public FamilyTree loadFile (String str){
-        FamilyTree familyTree = null;
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(str))){
-            familyTree = (FamilyTree) ois.readObject();
-                       
-        }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
+public class SaveRead implements SaveAndRead{
+    public FamilyTree read(String fileAddress) throws IOException, ClassNotFoundException{
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileAddress));
+        FamilyTree familyTree = (FamilyTree)in.readObject();
+        in.close();
         return familyTree;
-
     }
 
-    public static void saveFile(FamilyTree familyTree, String str){
-        try (ObjectOutputStream oos = new ObjectOutputStream((new FileOutputStream(str)))){
-            oos.writeObject(familyTree);
-        }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
-    }
     @Override
-    public void SaveRead() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'SaveRead'");
+    public void save(FamilyTree familyTree, String fileAddress) throws IOException{
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileAddress));
+        out.writeObject(familyTree);
+        out.close();
 
-    
-    }
 
-}
-
-   
-    
-
- 
+} 
+} 
+  
