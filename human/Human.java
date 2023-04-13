@@ -6,24 +6,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Human implements Serializable{
+    private int id;
     private String name;
     private Gender gender;
-    private String birthDate;
+    private LocalDate birthDate;
     private Human father;
     private Human mother;
+    private int idMather;
+    private int idFather;
     private List<Human> children;
 
-    public Human(String name, String birthDate, Gender gender, Human father, Human mother){
+    public Human(int id, String name, LocalDate birthDate, Gender gender, Human father, Human mother){
+        this.id = id;
         this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
         this.father = father;
         this.mother = mother;
+       // this.idMather = idMather;
+       // this.idFather = idFather;
         children = new ArrayList<>();
     }
 
-    public Human(String name, String birthDate, Gender gender){
-        this(name, birthDate, gender, null, null);
+    public Human(int id, String name, LocalDate birthDate, Gender gender){
+        this(id, name, birthDate, gender, null, null);
+    }
+
+    public Human(int id2, String name2, LocalDate birthDate2, Gender gender2, int idMother, int idFather2) {
     }
 
     public boolean addChil(Human chil){
@@ -34,12 +43,16 @@ public class Human implements Serializable{
         return false;
     }
 
+    public int getId(){
+        return id;
+    }
+
     public String getName() {
         return name;
         
     }
 
-    public String getBirthDate(){
+    public LocalDate getBirthDate(){
         return birthDate;
     }
 
@@ -62,7 +75,15 @@ public class Human implements Serializable{
         return gender;
     }
 
-    public void setBirthDate(String birthDate){
+    public int getIdMother(){
+        return idMather;
+    }
+
+    public int getIdFather(){
+        return idFather;
+    }
+
+    public void setBirthDate(LocalDate birthDate){
         this.birthDate = birthDate;
     }
 
@@ -79,6 +100,9 @@ public class Human implements Serializable{
 
     public String getInfo(){
         StringBuilder sb = new StringBuilder();
+        sb.append("ID: ");
+        sb.append(id);
+        sb.append(", ");
         sb.append("Имя: ");
         sb.append(name);
         sb.append(", ");

@@ -1,10 +1,12 @@
-package tree.familyTree;
+package tree.handler;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import tree.familyTree.FamilyTree;
 
 public class SaveRead implements SaveAndRead{
     public FamilyTree read(String fileAddress) throws IOException, ClassNotFoundException{
